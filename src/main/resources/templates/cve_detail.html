@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>CVE Detail</title>
+</head>
+<body>
+    <h1>CVE Detail Page</h1>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <td th:text="${cve.id}">ID</td>
+        </tr>
+        <tr>
+            <th>Published Date</th>
+            <td th:text="${cve.publishedDate != null ? cve.publishedDate : 'N/A'}">Published Date</td>
+        </tr>
+        <tr>
+            <th>Last Modified Date</th>
+            <td th:text="${cve.lastModifiedDate != null ? cve.lastModifiedDate : 'N/A'}">Last Modified</td>
+        </tr>
+        <tr>
+            <th>Base Score</th>
+            <td th:text="${cve.baseScore != null ? cve.baseScore : 'N/A'}">Base Score</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <ul>
+                    <li th:each="desc : ${cve.descriptions}" 
+                        th:text="${desc.value}"></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+    <a th:href="@{/cves/list}">← Back to CVE List</a>
+</body>
+</html>
